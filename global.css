@@ -2,7 +2,8 @@
 
 html,
 body {
-	font-family: 'Yanone Kaffeesatz', sans-serif; /* TODO die ist nur zum testen */
+	font-family: 'Abel', sans-serif;
+	/* font-family: 'Parisienne', cursive; */
 	height: 100%;
 	position: relative;
 	scroll-behavior: smooth;
