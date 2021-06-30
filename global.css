@@ -2,14 +2,12 @@
 
 html,
 body {
+	color: var(--font-color);
 	font-family: 'Abel', sans-serif;
-	/* font-family: 'Parisienne', cursive; */
-	height: 100%;
-	/* padding: 0;
-	margin: 0; */
+	/* font-family: 'Parisienne', cursive; TODO */
+	padding: 0;
 	position: relative;
 	scroll-behavior: smooth;
-	width: 100%;
 }
 
 a:link,
@@ -17,6 +15,80 @@ a:visited,
 a:hover,
 a:active {
 	color: inherit;
+}
+
+a.underline {
+	--link-color: #a8917a;
+
+	color: var(--link-color);
+	text-decoration: none;
+	position: relative;
+}
+
+a.underline::before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 0;
+	height: 2px;
+	background-color: var(--link-color);
+	transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.underline:hover::before {
+		left: 0;
+		right: auto;
+		width: 100%;
+	}
+}
+
+.section {
+	padding: 0 0 var(--section-padding-top-bottom) 0;
+}
+
+/* Following an idea from https://stackoverflow.com/a/49331661/3125128 */
+section:not(#nav-bar):not(#footer):before {
+	height: var(--section-padding-top-bottom);
+	content: '';
+	display: block;
+}
+
+.section.grey-background {
+	background: var(--grey);
+}
+
+.section-body {
+	padding: 1.5em 0;
+}
+
+@media (min-width: 992px) {
+	.frame {
+		padding: 0.5rem;
+		display: inline-block;
+		border: 3px solid var(--font-color);
+		font-size: 2.5rem;
+		border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+		text-transform: uppercase;
+		letter-spacing: 0.3ch;
+		background: #f8f9fa;
+		position: relative;
+	}
+
+	.frame::before {
+		content: '';
+		border: 2px solid var(--font-color);
+		filter: opacity(60%);
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+		border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+	}
 }
 
 /* label {
@@ -59,11 +131,14 @@ button:focus {
 	border-color: #666;
 } */
 
-/* TODO ab hier eigener content */
-
 :root {
-	--gradient: linear-gradient(0.25turn, #d5dad7, #dce4df 66%, #f7f7f7);
-	/* --light: #fff; */
+	--font-color: #212529;
+	/* --gradient: linear-gradient(0.25turn, #d5dad7, #dce4df 66%, #f7f7f7); */
+	--gradient: linear-gradient(0.25turn, #cedacc, #dce4df 66%, #f7f7f7);
+	--img-border-small-devices: 3px solid var(--font-color);
+	--grey: #f8f9fa;
+	--section-padding-top-bottom: 4em;
+	--success: #57b846;
 }
 
 /* .main-bgcolor {
